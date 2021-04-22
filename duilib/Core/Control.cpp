@@ -809,7 +809,8 @@ void Control::HandleMessage(EventArgs& msg)
 		return;
     }
 	else if (msg.Type == kEventInternalKillFocus) {
-		SetState(kControlStateNormal);
+		if(GetState() == kControlStateHot)
+			SetState(kControlStateNormal);
         m_bFocused = false;
         Invalidate();
 		return;
